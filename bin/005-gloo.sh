@@ -9,4 +9,6 @@ echo "Installing Gloo Gateway"
 
 glooctl install gateway
 
+sleep 10
+
 kubectl get deploy -n gloo-system -o yaml | linkerd inject - | kubectl apply -f-
