@@ -13,7 +13,7 @@ linkerd jaeger install | kubectl apply -f-
 linkerd jaeger check
 linkerd multicluster install | kubectl apply -f-
 linkerd multicluster check
-linkerd viz install | kubectl apply -f-
+linkerd viz install --set grafana.url=grafana.grafana:3000 | kubectl apply -f-
 linkerd viz check
 linkerd check
 
@@ -36,5 +36,10 @@ kubectl create clusterrolebinding \
   $(whoami)-cluster-admin \
   --clusterrole=cluster-admin \
   --user=$(whoami)
+
+
+echo "granting grafana authz to prometheus"
+
+kubectl apply -f $(dirname $0)/../kubernetes/_script-support/authzpolicy-grafana.yaml
 
 echo "good to go!"
