@@ -30,4 +30,11 @@ echo "linkerd installed, installing tapshark"
   rm -rf ${TMPDIR}
 )
 
-echo "tapshark installed, ready to roll"
+echo "tapshark installed, granting self tap access"
+
+kubectl create clusterrolebinding \
+  $(whoami)-cluster-admin \
+  --clusterrole=cluster-admin \
+  --user=$(whoami)
+
+echo "good to go!"
