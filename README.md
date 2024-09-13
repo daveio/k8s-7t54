@@ -1,3 +1,3 @@
-# k8s-754t
+# k8s-7t54
 
-Kubernetes resources for 754t self-hosting
+Kubernetes resources for 7t54 self-hosting
